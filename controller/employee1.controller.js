@@ -51,19 +51,15 @@ try {
 
 exports.deleteEmployee = (req, res) => {
 try {
-    employee.find({}).then((data) => {
-        console.log(data)
+      employee.deleteMany({}).then((data) => {
         if(data.DOR < new Date()){
-            employee.deleteMany({}).then((data1) => {
-                console.log(data1)
-                res.status(200).json({"message": "successfully deleted"})
-            })
-        }
-        else{
-            res.send(data)
+         res.status(200).json({"message": "successfully deleted"})
+      }
+     else{
+         res.send(data)
         }
     })
-} catch (error) {
+    } catch (error) {
     console.log(error)
 }
 }
