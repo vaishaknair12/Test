@@ -1,6 +1,23 @@
 const mongoose = require('mongoose');
 const employee = require('../models/employee');
 
+exports.add = (req, res) => {
+    try {
+      let p =  new employee ({
+        EmployeeName : req.body.EmployeeName,
+        EmployeeAddress : req.body.EmployeeAddress,
+        Designation: req.body.Designation,
+        DOR: req.body.DOR,
+        DOJ: req.body.DOJ,
+      })
+      p.save().then(data => {
+                  res.send({ "message": "Success", "out": true })
+                }).catch(err => console.log(err))
+       } catch (error) {
+           console.log(error)
+       }
+   }
+
    exports.Notebook = (req, res) => {
      try {
        let totalP = req.body.totalP
